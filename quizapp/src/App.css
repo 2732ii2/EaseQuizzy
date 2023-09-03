@@ -1,0 +1,85 @@
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+#main{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 70%;
+  height: auto;
+  border: 1px solid rgb(245, 243, 243,.2);
+  border-radius: 20px;
+  background: rgba(202, 199, 199, 0.1);
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+}
+#h_1{
+  color: white;
+  font-weight: 500;
+  font-size: 42px;
+   letter-spacing: 1px;
+  word-spacing: 2.5px;
+}
+#p_{
+  color: white;
+  margin-top: -10px;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+}
+
+#select_{
+  width: 30%;
+  height: 40px;
+  min-height: 40px;
+
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 5%;
+  margin-bottom: 1%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+#same{
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+  word-spacing: 2px;
+  color: white;
+}
+#last_{
+  width: 100%;
+  height: 60px;
+  min-height: 60px;
+  /* background: white; */
+  margin-top: 10px;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+#btn{
+  margin-right: 40px;
+  background: white;
+  color: black;
+  font-size: 20px;
+  width: 100px;
+  height: 45px;
+  border-radius: 7px;
+}
+.spec{
+    position: absolute;
+    margin-left: 92%;
+    margin-top: 1%;
+    background: blue;
+    color: white;
+
+}
