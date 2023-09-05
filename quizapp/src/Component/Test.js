@@ -7,6 +7,8 @@ export default function Test() {
     var a=JSON.parse(localStorage.getItem("test"));
     var [err,seterr]=useState("");
     var [arr,setarr]=useState([]);
+    var [mar,setmar]=useState(0);
+    console.log(mar);
     var navi=useNavigate();
     var main;
     var arr2;
@@ -92,7 +94,7 @@ export default function Test() {
                             return (
                               <div
                                 key={i}
-                                style={{ marginLeft: "-000%" }}
+                                style={{ marginLeft: `-${mar}00%` }}
                                 id="tdsame"
                               >
                                 <h1 id="h_td">
@@ -100,12 +102,29 @@ export default function Test() {
                                   Q{i + 1} : {"    "} {main.x[arr2[i]]}
                                 </h1>
                                 <div id="tdbtn">
-                                  <p id="td_p">{main.x[`${arr2[i]}a`]}</p>
-                                  <p id="td_p">{main.x[`${arr2[i]}b`]}</p>
-                                  <p id="td_p">{main.x[`${arr2[i]}c`]}</p>
-                                  <p id="td_p">{main.x[`${arr2[i]}d`]}</p>
+                                  <p id="td_p">
+                                    <span>A</span> {main.x[`${arr2[i]}a`]}
+                                  </p>
+                                  <p id="td_p">
+                                    <span>b</span> {main.x[`${arr2[i]}b`]}
+                                  </p>
+                                  <p id="td_p">
+                                    <span>c</span> {main.x[`${arr2[i]}c`]}
+                                  </p>
+                                  <p id="td_p">
+                                    <span>D</span> {main.x[`${arr2[i]}d`]}
+                                  </p>
                                 </div>
-                                <button id='sv_nxt'></button>
+                                <button
+                                  onClick={() => {
+                                    if (mar < l_.length) {
+                                      setmar(mar + 1);
+                                    }
+                                  }}
+                                  id="sv_nxt"
+                                >
+                                  Save and Next
+                                </button>
                               </div>
                             );
                         }
@@ -116,6 +135,30 @@ export default function Test() {
                                   {" "}
                                   Q{i + 1} : {"    "} {main.x[arr2[i]]}
                                 </h1>
+                                <div id="tdbtn">
+                                  <p id="td_p">
+                                    <span>A</span> {main.x[`${arr2[i]}a`]}
+                                  </p>
+                                  <p id="td_p">
+                                    <span>b</span> {main.x[`${arr2[i]}b`]}
+                                  </p>
+                                  <p id="td_p">
+                                    <span>c</span> {main.x[`${arr2[i]}c`]}
+                                  </p>
+                                  <p id="td_p">
+                                    <span>D</span> {main.x[`${arr2[i]}d`]}
+                                  </p>
+                                </div>
+                                <button
+                                  onClick={() => {
+                                    if (mar+1<(l_.length) ){
+                                      setmar(mar + 1);
+                                    }
+                                  }}
+                                  id="sv_nxt"
+                                >
+                                  Save and Next
+                                </button>
                               </div>
                             );
                         }

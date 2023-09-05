@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Block({b,a}) {
     // console.log(b,a);
 
-    
+
    var navi= useNavigate();
   return (
     <>
@@ -14,6 +14,9 @@ export default function Block({b,a}) {
           fontWeight: 400,
           letterSpacing: "2px",
           wordSpacing: "4px",
+          fontSize:"1.4rem",
+          height:"30px",
+          overflow:"hidden"
         }}
       >
         Subject : {b.subject}
@@ -22,7 +25,7 @@ export default function Block({b,a}) {
         style={{
           textAlign: "center",
           fontSize: "18px",
-          marginTop: "-4px",
+          marginTop: "-1%",
           fontWeight: 500,
           letterSpacing: "1px",
           textTransform: "capitalize",
@@ -36,7 +39,7 @@ export default function Block({b,a}) {
           textAlign: "center",
           fontSize: "20px",
           fontWeight: 250,
-          marginTop: "70px",
+          marginTop: "10%",
           letterSpacing: "1px",
           textTransform: "capitalize",
         }}
@@ -61,7 +64,7 @@ export default function Block({b,a}) {
           marginLeft: "38%",
           border: "1.3px solid white",
           outline: "none",
-          marginTop: "40px",
+          marginTop: "10%",
         }}
       >
         <PlayArrowIcon style={{ fontSize: "28px", color: "white" }} />
