@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import "./questions.css";
+import { send } from '../axios/api';
 import Input from './Input';
+import { useNavigate } from 'react-router-dom';
 export default function Question({obj}) {
   var local_obj = localStorage.getItem("obj");
   var d;
@@ -9,6 +11,7 @@ export default function Question({obj}) {
     obj =parseInt(d.Questions);
   }
   // var obj=1;
+  var navi=useNavigate();
   var list_ = [];
   var obj_li = [];
   var [st_obj, setsta_obj] = useState(obj_li);
@@ -30,6 +33,9 @@ export default function Question({obj}) {
       <button
         onClick={() => {
           console.log([st_obj,d]);
+          send([st_obj, d]);
+          localStorage.clear("obj");
+          navi("/admin");
         }}
         className="spec"
       >
