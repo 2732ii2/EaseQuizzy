@@ -6,6 +6,7 @@ import Block from './Block';
 import { useNavigate } from 'react-router-dom';
 export default function Student() {
     var [arr,setarr]=useState([]);
+    var [err,seterr]=useState("");
     var navi=useNavigate();
     async function caller(){
        try{
@@ -16,6 +17,7 @@ export default function Student() {
        }
        catch(e){
         console.log(e.message);
+        seterr(e.message);
        }
     }
     useEffect(()=>{
@@ -45,7 +47,7 @@ export default function Student() {
         <div id="down_stu">
           {arr.length === 0 ? (
             <div style={{width:"50%",height:"90%",display:"flex",justifyContent:"center",alignItems:"center"}}>
-              <div id='ring'></div>
+              {err ? <p style={{color:"red"}}>Some error is caused check the server </p>: <div id='ring'></div>}
             </div>
           ) : (
             arr.map((e, i) => {

@@ -3,6 +3,8 @@ import "./questions.css";
 import { send } from '../axios/api';
 import Input from './Input';
 import { useNavigate } from 'react-router-dom';
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+
 export default function Question({obj}) {
   var local_obj = localStorage.getItem("obj");
   var d;
@@ -30,6 +32,12 @@ export default function Question({obj}) {
   }
   return (
     <div id="question">
+      <button onClick={()=>{
+        navi("/admin");
+        localStorage.clear("obj");
+      }} style={{position:"absolute",width:"100px",height:"auto",marginTop:"-8%",marginLeft:"100%",background:"transparent",border:"none",outline:"none",color:"white"}}> 
+      <KeyboardBackspaceIcon />
+      </button>
       <button
         onClick={() => {
           console.log([st_obj,d]);
@@ -77,6 +85,9 @@ export default function Question({obj}) {
                       }}
                     />
                   </div>
+                  <div style={{width:"50%",height:"60px",marginTop:"2%",display:"flex",justifyContent:"center",alignItems:"center"}}>Ans Key :
+                   <input style={{width:"40px",height:"20px",marginLeft:"20px",textAlign:"center"}}  placeholder='a | b | c' /> 
+                   </div>
                   <div id="downslide">
                     <div id="up">
                       <Input number={"a"} value={getback} keys={main} />

@@ -28,7 +28,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    height: 70vh;
+    height: 75vh;
     display: flex;
     margin-top: 7vh;
     overflow: hidden;
@@ -38,21 +38,29 @@
     font-size: 32px;
     font-weight: 600;
     letter-spacing: 3px ;
-    height: auto;
+    height: 70px;
+    overflow-y: scroll;
     font-family: 'Handjet', cursive;
     font-family: 'Great Vibes', cursive;
     word-spacing: 2px;
+}
+
+.set{
+    background: white;
+    color: black;
 }
 #tdsame{
     width: 100%;min-width: 100%;
     height: 100%;
     display: flex;
+    /* border: 1px solid white; */
     flex-direction: column;
 }
 #tdbtn{
     width:50% ;
-    margin-top: 5%;
+    margin-top: 2%;
     height: auto;
+    /* border: 1px solid white; */
     display: flex;
     flex-direction: column;
 }
@@ -174,4 +182,8 @@ span{
             width: 45%;
             min-width: 400px;
         }
+}
+
+.disbles{
+    background: rgb(107, 107, 245);
 }

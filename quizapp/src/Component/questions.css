@@ -64,7 +64,7 @@
     width: 80%;
     height: 200px;
     display: flex;
-    margin-top: 7%;
+    margin-top: 2%;
     flex-direction: column;
 }
 #up,#down{
