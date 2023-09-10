@@ -72,7 +72,7 @@ export default function Test() {
                 if (y.subject===a.subject){
                   // console.log("true");
                   main={x,y};
-                    c=Object.keys(x).length/5;
+                    c=Object.keys(x).length/6;
                     arr2 = Object.keys(x);
                     // console.log("this is arr2 :",x[`${arr2["0"]}a`]);
                     // console.log(c);

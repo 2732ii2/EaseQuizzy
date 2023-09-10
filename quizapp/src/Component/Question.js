@@ -85,9 +85,33 @@ export default function Question({obj}) {
                       }}
                     />
                   </div>
-                  <div style={{width:"50%",height:"60px",marginTop:"2%",display:"flex",justifyContent:"center",alignItems:"center"}}>Ans Key :
-                   <input style={{width:"40px",height:"20px",marginLeft:"20px",textAlign:"center"}}  placeholder='a | b | c' /> 
-                   </div>
+                  <div
+                    onChange={(e) => {
+                      setsta_obj({
+                        ...st_obj,
+                        [`${i}key`]: e.target.value,
+                      });
+                    }}
+                    style={{
+                      width: "50%",
+                      height: "60px",
+                      marginTop: "2%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Ans Key :
+                    <input
+                      style={{
+                        width: "40px",
+                        height: "20px",
+                        marginLeft: "20px",
+                        textAlign: "center",
+                      }}
+                      placeholder="a | b | c"
+                    />
+                  </div>
                   <div id="downslide">
                     <div id="up">
                       <Input number={"a"} value={getback} keys={main} />
@@ -122,6 +146,32 @@ export default function Question({obj}) {
                         }
                         console.log(j.target.value);
                       }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      width: "50%",
+                      height: "60px",
+                      marginTop: "2%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Ans Key :
+                    <input onChange={(e)=>{
+                      setsta_obj({
+                        ...st_obj,
+                        [`${i}key`]: e.target.value,
+                      });
+                    }}
+                      style={{
+                        width: "40px",
+                        height: "20px",
+                        marginLeft: "20px",
+                        textAlign: "center",
+                      }}
+                      placeholder="a | b | c"
                     />
                   </div>
                   <div id="downslide">
