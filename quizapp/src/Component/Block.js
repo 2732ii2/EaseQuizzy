@@ -54,6 +54,10 @@ export default function Block({b,a}) {
           if (!JSON.parse(localStorage.getItem("test"))) {
             localStorage.setItem("test", JSON.stringify(b));
           }
+          else{
+            localStorage.clear("test");
+            localStorage.setItem("test", JSON.stringify(b));
+          }
           navi("/student/test");
         }}
         style={{

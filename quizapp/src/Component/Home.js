@@ -6,9 +6,10 @@ import Question from './Question';
 import { useSelector } from 'react-redux';
 import Student from './Student';
 import Test from './Test';
+import Result from './Result';
 export default function Home() {
    var value= useSelector(state=>state);
-   console.log(value);
+  //  console.log(value);
   return (
     <div className="App">
       <Routes>
@@ -16,6 +17,8 @@ export default function Home() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/student" element={<Student />} />
         <Route path="/student/test" element={<Test />} />
+        <Route path="/student/result" element={<Result />} />
+
         <Route path="/admin/questions" element={<Question obj={value} />} />
       </Routes>
     </div>

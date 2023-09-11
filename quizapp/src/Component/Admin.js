@@ -89,6 +89,8 @@ export default function Admin() {
                 localStorage.setItem("obj",JSON.stringify(obj_));
                 // obj_.Questions
                 dispatch(setter(obj_.Questions));
+              // dispatch(list_setter(obj));
+
                 navi("/admin/questions");
             }
           }}
