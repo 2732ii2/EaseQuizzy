@@ -49,7 +49,7 @@ export default function Student() {
             <div style={{width:"50%",height:"90%",display:"flex",justifyContent:"center",alignItems:"center"}}>
               {err ? <p style={{color:"red"}}>Some error is caused check the server </p>: <div id='ring'></div>}
             </div>
-          ) : (
+          ) : arr? (
             arr.map((e, i) => {
               var [a, b] = JSON.parse(e.name);
               // console.log(a,b);
@@ -73,7 +73,8 @@ export default function Student() {
                 );
               }
             })
-          )}
+          ):<div></div>
+          }
         </div>
       </div>
     </div>

@@ -103,7 +103,7 @@ export default function Test() {
     caller();
     dispatch(question_list(main));
     var intervalid = setInterval(() => {
-      if (value === 10) {
+      if (value === 30) {
         setValue(0);
         if (mar < l_.length - 1) {
           setmar(mar + 1);

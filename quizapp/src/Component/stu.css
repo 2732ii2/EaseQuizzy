@@ -12,7 +12,11 @@
     background: black;
 }
 #resu_same{
-    
+    margin-top: 20px;
+    font-size: 22px;
+    letter-spacing: 1px ;
+    font-weight: 500;
+    word-spacing: 2px;
 }
 #result{
     width: 100%;
@@ -20,7 +24,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     /* display: fle; */
     background: black;

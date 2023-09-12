@@ -30,7 +30,8 @@ export default function Question({obj}) {
       [number + alpha]: e,
     });
   }
-  return (
+  try{
+     return (
     <div id="question">
       <button onClick={()=>{
         navi("/admin");
@@ -218,4 +219,8 @@ export default function Question({obj}) {
       </div>
     </div>
   );
+  }
+  catch(e){
+    return <div style={{color:"red"}}>{e.message}</div>
+  }
 }
