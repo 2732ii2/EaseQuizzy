@@ -1,11 +1,10 @@
 import React from 'react'
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useNavigate } from 'react-router-dom';
-export default function Block({b,a}) {
-    // console.log(b,a);
+export default function Block({ b, a, states, bs }) {
+  // console.log(bs,b,a);
 
-
-   var navi= useNavigate();
+  var navi = useNavigate();
   return (
     <>
       <h2
@@ -14,9 +13,9 @@ export default function Block({b,a}) {
           fontWeight: 400,
           letterSpacing: "2px",
           wordSpacing: "4px",
-          fontSize:"1.4rem",
-          height:"30px",
-          overflow:"hidden"
+          fontSize: "1.4rem",
+          height: "30px",
+          overflow: "hidden",
         }}
       >
         Subject : {b.subject}
@@ -49,16 +48,17 @@ export default function Block({b,a}) {
       </p>
       <button
         onClick={() => {
-          // console.log({b,a});
-
-          if (!JSON.parse(localStorage.getItem("test"))) {
-            localStorage.setItem("test", JSON.stringify(b));
-          }
-          else{
-            localStorage.clear("test");
-            localStorage.setItem("test", JSON.stringify(b));
-          }
-          navi("/student/test");
+          // console.log({ b, a });
+          bs(JSON.stringify(b));
+          states("flex");
+          // if (!JSON.parse(localStorage.getItem("test"))) {
+          //   localStorage.setItem("test", JSON.stringify(b));
+          // }
+          // else{
+          //   localStorage.clear("test");
+          //   localStorage.setItem("test", JSON.stringify(b));
+          // }
+          // navi("/student/test");
         }}
         style={{
           width: "100px",

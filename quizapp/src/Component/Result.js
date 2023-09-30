@@ -6,6 +6,7 @@ import "./result.css";
 export default function Result() {
     var name; 
     var count=0;
+    var rp="0%";
     var navi=useNavigate();
     var main_arr=[];
     const redux_state = useSelector((state) => state);
@@ -33,23 +34,32 @@ export default function Result() {
                 answer_arr.push(d);
             }
         })
+        console.log(answer_arr);
         if (answer_arr){
             for (var i=0;i<answer_arr.length;i++){
                 if (answer_arr[i]){
-                    var [x,y]=[answer_arr[i][i], redux_state.arr[i][i]];
-                    x=x.toLowerCase();
-                    y=y.toLowerCase();
-                    console.log(x,y);
-                    if(x==y){
-                        count+=1;
+                    var [x,y]=[answer_arr[i][i], redux_state.arr[i]?redux_state.arr[i][i]:null];
+                    
+                    if(x && y){
+                      x = x.toLowerCase();
+                      y = y.toLowerCase();
+                      console.log(x, y);
+                      if (x == y) {
+                        count += 1;
+                        console.log(true);
+                      }
                     }
                 }
             }
         }
-        var rp=((count / redux_state.arr.length)*100);
-        rp=(rp+"%");
+        console.log(count);
+        // rp=parseInt((count / redux_state.arr.length)*100);
+        //some editing 
+        var lc_=(parseInt(Object.keys(redux_state.questi_l[0].x).length / 6));
+        rp = parseInt((count / lc_) * 100);
+        rp=(" "+rp+"%");
     }catch(e){
-        console.log(e.message);
+        console.log("this is message ",e.message);
     }
   return (
     <div id="result">
@@ -59,7 +69,7 @@ export default function Result() {
             }} />
         </div>
         {name ? (
-            <div id="resu_same">Result of {name} Test : {rp}</div>
+            <div id="resu_same">{localStorage.getItem("user")} Result of {name} Test : {rp}</div>
         ) : (
             <di id="resu_same" v>
             Go And give test
@@ -71,91 +81,137 @@ export default function Result() {
                 main_arr?main_arr.map((e,i)=>{
                     try{
                         return (
-                      <div key={i} id="sameanalyiz">
-                        <div id="topana">
-                          <h1 id="anah_1">
-                            {redux_state.questi_l[0].x[i]
-                              ? redux_state.questi_l[0].x[i]
-                              : ""}{" "}
-                            {}
-                          </h1>
-                        </div>
-                        <div id="bottomana">
-                          <p
-                            style={{
-                              background:
-                                redux_state.arr[i][i] == "a"
-                                  ? redux_state.questi_l[0].x[
-                                      `${i}key`
-                                    ].toLowerCase() == "a"
-                                    ? "rgb(33, 204, 33,.5)"
-                                    : "red"
-                                  : "transparent",
-                            }}
-                            id="ana_p"
-                          >
-                            {" "}
-                            {redux_state.questi_l[0].x[`${i}a`]
-                              ? redux_state.questi_l[0].x[`${i}a`]
-                              : ""}{" "}
-                          </p>
-                          <p
-                            style={{
-                              background:
-                                redux_state.arr[i][i] == "b"
-                                  ? redux_state.questi_l[0].x[
-                                      `${i}key`
-                                    ].toLowerCase() == "b"
-                                    ? "rgb(33, 204, 33,.5)"
-                                    : "red"
-                                  : "transparent",
-                            }}
-                            id="ana_p"
-                          >
-                            {redux_state.questi_l[0].x[`${i}b`]
-                              ? redux_state.questi_l[0].x[`${i}b`]
-                              : ""}{" "}
-                          </p>
-                          <p
-                            style={{
-                              background:
-                                redux_state.arr[i][i] == "c"
-                                  ? redux_state.questi_l[0].x[
-                                      `${i}key`
-                                    ].toLowerCase() == "c"
-                                    ? "rgb(33, 204, 33,.5)"
-                                    : "red"
-                                  : "transparent",
-                            }}
-                            id="ana_p"
-                          >
-                            {redux_state.questi_l[0].x[`${i}c`]
-                              ? redux_state.questi_l[0].x[`${i}c`]
-                              : ""}{" "}
-                          </p>
-                          <p
-                            style={{
-                              background:
-                                redux_state.arr[i][i] == "d"
-                                  ? redux_state.questi_l[0].x[
-                                      `${i}key`
-                                    ].toLowerCase() == "d"
-                                    ? "rgb(33, 204, 33,.5)"
-                                    : "red"
-                                  : "transparent",
-                            }}
-                            id="ana_p"
-                          >
-                            {redux_state.questi_l[0].x[`${i}d`]
-                              ? redux_state.questi_l[0].x[`${i}d`]
-                              : ""}{" "}
-                          </p>
-                        </div>
-                      </div>
-                    );
+                          <div key={i} id="sameanalyiz">
+                            <div id="topana">
+                              <h1 id="anah_1">
+                                {redux_state.questi_l[0].x[i]
+                                  ? redux_state.questi_l[0].x[i]
+                                  : ""}{" "}
+                                {}
+                              </h1>
+                            </div>
+                            <div id="bottomana">
+                              <p
+                                style={{
+                                  background:
+                                    redux_state.arr[i][i] == "a"
+                                      ? redux_state.questi_l[0].x[
+                                          `${i}key`
+                                        ].toLowerCase() == "a"
+                                        ? "rgb(33, 204, 33,.5)"
+                                        : "red"
+                                      : "transparent",
+                                }}
+                                id="ana_p"
+                              >
+                                {" "}
+                                {redux_state.questi_l[0].x[`${i}a`]
+                                  ? redux_state.questi_l[0].x[`${i}a`]
+                                  : ""}{" "}
+                              </p>
+                              <p
+                                style={{
+                                  background:
+                                    redux_state.arr[i][i] == "b"
+                                      ? redux_state.questi_l[0].x[
+                                          `${i}key`
+                                        ].toLowerCase() == "b"
+                                        ? "rgb(33, 204, 33,.5)"
+                                        : "red"
+                                      : "transparent",
+                                }}
+                                id="ana_p"
+                              >
+                                {redux_state.questi_l[0].x[`${i}b`]
+                                  ? redux_state.questi_l[0].x[`${i}b`]
+                                  : ""}{" "}
+                              </p>
+                              <p
+                                style={{
+                                  background:
+                                    redux_state.arr[i][i] == "c"
+                                      ? redux_state.questi_l[0].x[
+                                          `${i}key`
+                                        ].toLowerCase() == "c"
+                                        ? "rgb(33, 204, 33,.5)"
+                                        : "red"
+                                      : "transparent",
+                                }}
+                                id="ana_p"
+                              >
+                                {redux_state.questi_l[0].x[`${i}c`]
+                                  ? redux_state.questi_l[0].x[`${i}c`]
+                                  : ""}{" "}
+                              </p>
+                              <p
+                                style={{
+                                  background:
+                                    redux_state.arr[i][i] == "d"
+                                      ? redux_state.questi_l[0].x[
+                                          `${i}key`
+                                        ].toLowerCase() == "d"
+                                        ? "rgb(33, 204, 33,.5)"
+                                        : "red"
+                                      : "transparent",
+                                }}
+                                id="ana_p"
+                              >
+                                {redux_state.questi_l[0].x[`${i}d`]
+                                  ? redux_state.questi_l[0].x[`${i}d`]
+                                  : ""}{" "}
+                              </p>
+                            </div>
+                          </div>
+                        );
                     }
                     catch(e){
-                        return <div>{e.message}</div>
+                        return (
+                          <div key={i} id="sameanalyiz">
+                            <div id="topana">
+                              <h1 id="anah_1">
+                                {redux_state.questi_l[0].x[i]
+                                  ? redux_state.questi_l[0].x[i]
+                                  : ""}{" "}
+                                {}
+                              </h1>
+                            </div>
+                            <div id="bottomana">
+                              <p
+                             
+                                id="ana_p"
+                              >
+                                {" "}
+                                {redux_state.questi_l[0].x[`${i}a`]
+                                  ? redux_state.questi_l[0].x[`${i}a`]
+                                  : ""}{" "}
+                              </p>
+                              <p
+                                
+                                id="ana_p"
+                              >
+                                {redux_state.questi_l[0].x[`${i}b`]
+                                  ? redux_state.questi_l[0].x[`${i}b`]
+                                  : ""}{" "}
+                              </p>
+                              <p
+                                
+                                id="ana_p"
+                              >
+                                {redux_state.questi_l[0].x[`${i}c`]
+                                  ? redux_state.questi_l[0].x[`${i}c`]
+                                  : ""}{" "}
+                              </p>
+                              <p
+                                
+                                id="ana_p"
+                              >
+                                {redux_state.questi_l[0].x[`${i}d`]
+                                  ? redux_state.questi_l[0].x[`${i}d`]
+                                  : ""}{" "}
+                              </p>
+                            </div>
+                          </div>
+                        );
                     }
                 }):""
 

@@ -12,11 +12,12 @@ export default function Test() {
   var a = JSON.parse(localStorage.getItem("test"));
   var [err, seterr] = useState("");
   var [arr, setarr] = useState([]);
+
   var dispatch = useDispatch();
   var redux_state = useSelector((state) => state);
   //  console.log(value);
   var [count, setcount] = useState(0);
-  // console.log("this is counter",count);
+  console.log("this is counter",count);
   var [mar, setmar] = useState(0);
   // console.log(mar);
   var navi = useNavigate();
@@ -35,7 +36,7 @@ export default function Test() {
   }
   // console.log(default_arr);
   var [obj, setobj] = useState(default_arr);
-  // console.log("this is answer key from user side :",obj);
+  console.log("this is answer key from user side :",obj);
   function sameFunction(i, aplha) {
     var f_d = [...obj];
     var cd = { [i]: aplha };
@@ -89,7 +90,10 @@ export default function Test() {
   }
   async function caller() {
     try {
+      // https://easyquizy.onrender.com
       var { data } = await axios.get("http://localhost:9800/getusers");
+      // var { data } = await axios.get("https://easyquizy.onrender.com/getusers");
+
       setarr(data);
       seterr("");
     } catch (e) {
@@ -172,13 +176,40 @@ export default function Test() {
             ) : (
               <button
                 onClick={() => {
-                  console.log("submitted");
-                  // console.log(obj);
+                  try{
+                    console.log("submitted");
+                  var user=(JSON.parse(localStorage.getItem("test")).user);
+                  console.log(user);
                   localStorage.clear("test");
-                  dispatch(list_setter(obj));
                   // console.log(redux_state);
+                  console.log(mar,count);
+                  if (parseInt(mar) === parseInt(count)) {
+                    // setmar(mar + 1);
+                    setValue(0);
+                    setcount(count + 1);
+                    if (!obj[count]) {
+                      // 0 + obj[0][0] == "0a" ? "set" : "";
+                      sameFunction(count, "");
+                    }
+                    else if (!obj[count + 1]) {
+                      sameFunction(count + 1, "");
+                    }
+                  } 
+                  localStorage.setItem("user",user);
+                  dispatch(list_setter(obj));
+
                   navi("/student/result");
-                }}
+                  }
+                  catch(e){
+                    console.log(e.message);
+                  }
+
+
+
+                }
+              
+            
+              }
               >
                 Submit
               </button>
@@ -256,8 +287,14 @@ export default function Test() {
                         <button
                           onClick={() => {
                             if (mar < l_.length) {
-                              setmar(mar + 1);
+                              // setmar(mar + 1);
                               setValue(0);
+                              setmar(mar + 1);
+                              setcount(count + 1);
+                              if (!obj[count]) {
+                                // 0 + obj[0][0] == "0a" ? "set" : "";
+                                sameFunction(count, "");
+                              } 
                             }
                           }}
                           id="sv_nxt"
@@ -329,9 +366,30 @@ export default function Test() {
                         </div>
                         <button
                           onClick={() => {
-                            if (mar + 1 < l_.length) {
-                              setmar(mar + 1);
-                            }
+
+                               if (mar + 1 < l_.length) {
+                                 setmar(mar + 1);
+                                 setValue(0);
+                                 setcount(count + 1);
+                                 if (!obj[count]) {
+                                   // 0 + obj[0][0] == "0a" ? "set" : "";
+                                   sameFunction(count, "");
+                                 }
+                                 // else if (!obj[count + 1]) {
+                                 //   sameFunction(count + 1, "");
+                                 // }
+                               } else if (mar  === count) {
+                                 // setmar(mar + 1);
+                                 setValue(0);
+                                 setcount(count + 1);
+                                 if (!obj[count]) {
+                                   // 0 + obj[0][0] == "0a" ? "set" : "";
+                                   sameFunction(count, "");
+                                 }
+                                 // else if (!obj[count + 1]) {
+                                 //   sameFunction(count + 1, "");
+                                 // }
+                               } 
                           }}
                           id="sv_nxt"
                         >

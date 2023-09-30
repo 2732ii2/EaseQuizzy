@@ -3,6 +3,8 @@
 
 
 const initial_state={val:0,arr:[],questi_l:[]};
+// const initial_state = 0;
+
 const reducer=(state=initial_state,action)=>{
     if (action.type==="set"){
         console.log(action)
@@ -13,19 +15,21 @@ const reducer=(state=initial_state,action)=>{
         };
     }
     else if (action.type === "listset") {
-    //   console.log(action);
+      console.log(action);
       return {
         ...state,
         ["arr"]: action.arr,
       };
     } else if (action.type === "question_list") {
       var c=([action.arr2]);
+      console.log(c);
       return {
         ...state,
         ["questi_l"]: c,
       };
         // return state;
-    } else {
+    } 
+    else {
       return state;
     }
 }

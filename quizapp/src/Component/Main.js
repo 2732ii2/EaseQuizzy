@@ -30,24 +30,33 @@ export default function Main() {
         <option> Select An Option </option>
         <option value="student"> Student </option>
         <option value="admin"> Admin </option>
+        <option value="dashboard"> Admin Dashboard </option>
       </select>
 
       <div>
         {select === "student" ? (
           <h2 id="same">Ready to Learn and Play </h2>
-        ) : (
+        ) : select == "admin" ? (
           <h2 id="same"> You want to create a Quiz </h2>
+        ) : (
+          <h2 id="same"> Welcome Sir to your dashboard </h2>
         )}
       </div>
       <div id="last_">
-        <button onClick={()=>{
-            if(select=="admin"){
-                navi("/admin");
-            }   
-            else{
-                navi("/student");
+        <button
+          onClick={() => {
+            if (select == "admin") {
+              navi("/admin");
+            } else if (select == "student") {
+              navi("/student");
+            } else  {
+              navi("/dashboard");
             }
-        }} id="btn">Next </button>
+          }}
+          id="btn"
+        >
+          Next{" "}
+        </button>
       </div>
     </div>
   );

@@ -8,8 +8,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
     /* display: fle; */
     background: black;
+}
+
+#name_getter{
+    width: 92%;
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 92%;
+    background: rgba(255, 253, 253, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
 }
 #resu_same{
     margin-top: 20px;

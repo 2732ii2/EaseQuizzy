@@ -7,15 +7,17 @@ import { useSelector } from 'react-redux';
 import Student from './Student';
 import Test from './Test';
 import Result from './Result';
+import AdDash from './AdDash';
 export default function Home() {
    var value= useSelector(state=>state);
-  //  console.log(value);
+   console.log(value);
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/student" element={<Student />} />
+        <Route path="/dashboard" element={<AdDash />} />
         <Route path="/student/test" element={<Test />} />
         <Route path="/student/result" element={<Result />} />
 
