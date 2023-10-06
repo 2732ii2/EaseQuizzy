@@ -1,5 +1,5 @@
 import express,{Router} from "express";
-import Use_r from "./Schema.js";
+import {Use_r,Use_r_2} from "./Schema.js";
 
 var route=express.Router();
 
@@ -19,6 +19,20 @@ route.post("/users",async (req, res) => {
     }
     res.send("hey back your page 👋 👋 👋 ");
 
+});
+
+route.post("/result", async (req, res) => {
+  // var d = { name: JSON.stringify(req.body) };
+  try {
+    console.log(req.body);
+    var validate = await Use_r_2(req.body);
+    console.log(validate);
+    await validate.save();
+    console.log("Data has been submitted");
+  } catch (e) {
+    console.log(e.message);
+  }
+  res.send("Result submitted 👋 👋 👋 ");
 });
 
 
