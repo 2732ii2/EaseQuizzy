@@ -7,6 +7,7 @@ export async function send(dat_a) {
     // var data = await axios.post("http://localhost:9800/users", dat_a);
     var data = await axios.post("https://easyquizy.onrender.com/users", dat_a);
 
+    
     console.log(data);
   } catch (e) {
     console.log(e.message);
