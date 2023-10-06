@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useNavigate } from 'react-router-dom';
 import "./result.css";
+import { res_submit } from '../axios/api';
 export default function Result() {
     var name; 
     var count=0;
     var rp="0%";
+    var [special_obj,setspecobj]=useState({
+      sub_name:"",
+      percentage:"",
+      name_of_user:""
+    })
+    console.log(special_obj);
     var navi=useNavigate();
     var main_arr=[];
     const redux_state = useSelector((state) => state);
@@ -57,10 +64,34 @@ export default function Result() {
         //some editing 
         var lc_=(parseInt(Object.keys(redux_state.questi_l[0].x).length / 6));
         rp = parseInt((count / lc_) * 100);
+        var res_1=rp;
         rp=(" "+rp+"%");
+        var d12=localStorage.getItem("user");
+        
     }catch(e){
         console.log("this is message ",e.message);
     }
+    async function caller(special_obj) {
+      try {
+        await res_submit(special_obj);
+        console.log("data has been send", special_obj);
+      } catch (e) {
+        console.log(e);
+      }
+      console.log("---------");
+    }
+    if (special_obj.name_of_user){
+      caller(special_obj);
+    }
+    useEffect(()=>{
+      setspecobj({
+        ...special_obj,
+        percentage: res_1,
+        sub_name: name,
+        name_of_user: d12,
+      });
+      
+    },[])
   return (
     <div id="result">
         <div style={{width:"100%",height:"70px",display:"flex",justifyContent:"end",alignItems:"center"}}>

@@ -91,8 +91,8 @@ export default function Test() {
   async function caller() {
     try {
       // https://easyquizy.onrender.com
-      var { data } = await axios.get("http://localhost:9800/getusers");
-      // var { data } = await axios.get("https://easyquizy.onrender.com/getusers");
+      // var { data } = await axios.get("http://localhost:9800/getusers");
+      var { data } = await axios.get("https://easyquizy.onrender.com/getusers");
 
       setarr(data);
       seterr("");

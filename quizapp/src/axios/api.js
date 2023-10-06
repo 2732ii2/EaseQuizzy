@@ -12,3 +12,13 @@ export async function send(dat_a) {
     console.log(e.message);
   }
 }
+
+export async function res_submit(data){
+     try{
+      var data = await axios.post("http://localhost:9800/result", data);
+      console.log(data);
+     }
+     catch(e){
+      console.log(e.message);
+     }
+}

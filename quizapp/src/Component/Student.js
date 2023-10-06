@@ -14,11 +14,13 @@ export default function Student() {
     var navi=useNavigate();
     async function caller(){
        try{
+
         // https://easyquizy.onrender.com
-            var {data} = await axios.get("http://localhost:9800/getusers");
-            // var { data } = await axios.get(
-            //   "https://easyquizy.onrender.com/getusers"
-            // );
+            // var {data} = await axios.get("http://localhost:9800/getusers");
+          //  console.log(data);
+            var { data } = await axios.get(
+              "https://easyquizy.onrender.com/getusers"
+            );
 
             setarr(data);
             
@@ -90,11 +92,13 @@ export default function Student() {
             marginTop: "4%",
           }}
         >
-          <input name="user"
-            onChange={(e)=>{
+          <input
+            name="user"
+            onChange={(e) => {
               setinput({
-                ...userinput,[e.target.name]:e.target.value
-              })
+                ...userinput,
+                [e.target.name]: e.target.value,
+              });
             }}
             style={{
               width: "100%",
@@ -109,28 +113,28 @@ export default function Student() {
           />
         </div>
         <div style={{ marginTop: "10%" }}>
-          <button onClick={()=>{
-            if (userinput){
-              // namesetstate("none");
-              var c = {
-                ...userinput,
-                subject: JSON.parse(bees).subject,
-                name: JSON.parse(bees).name,
-                Questions: JSON.parse(bees).Questions,
-                id: JSON.parse(bees).id,
-              };
-              console.log(c);
+          <button
+            onClick={() => {
+              if (userinput) {
+                // namesetstate("none");
+                var c = {
+                  ...userinput,
+                  subject: JSON.parse(bees).subject,
+                  name: JSON.parse(bees).name,
+                  Questions: JSON.parse(bees).Questions,
+                  id: JSON.parse(bees).id,
+                };
+                console.log(c);
 
-              if (!JSON.parse(localStorage.getItem("test"))) {
-                localStorage.setItem("test", JSON.stringify(c));
+                if (!JSON.parse(localStorage.getItem("test"))) {
+                  localStorage.setItem("test", JSON.stringify(c));
+                } else {
+                  localStorage.clear("test");
+                  localStorage.setItem("test", JSON.stringify(c));
+                }
+                navi("/student/test");
               }
-              else{
-                localStorage.clear("test");
-                localStorage.setItem("test", JSON.stringify(c));
-              }
-              navi("/student/test");
-            }
-          }}
+            }}
             style={{
               width: "150px",
               height: "50px",
@@ -183,7 +187,7 @@ export default function Student() {
                 <div id="ring"></div>
               )}
             </div>
-          ) : arr ? (
+          ) : arr.length !== 0 ? (
             arr.map((e, i) => {
               var [a, b] = JSON.parse(e.name);
               // console.log(a,b);
@@ -202,6 +206,12 @@ export default function Student() {
               } else if (i % 4 === 0) {
                 return (
                   <div className="blue" id="stusame" key={i}>
+                    <Block b={b} a={a} states={namesetstate} bs={setbees} />
+                  </div>
+                );
+              } else {
+                return (
+                  <div className="pink" id="stusame" key={i}>
                     <Block b={b} a={a} states={namesetstate} bs={setbees} />
                   </div>
                 );
