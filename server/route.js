@@ -34,7 +34,20 @@ route.post("/result", async (req, res) => {
   }
   res.send("Result submitted 👋 👋 👋 ");
 });
-
+route.get("/getresult", async (req, res) => {
+  // var d = { name: JSON.stringify(req.body) };
+  try {
+    console.log(req.body);
+    var users = await Use_r_2.find();
+    console.log(users);
+    // console.log("Data has been submitted");
+    res.send(users);
+  } catch (e) {
+    console.log(e.message);
+    res.send(e.message);
+  }
+  
+});
 
 
 route.get("/getusers", async (req, res) => {

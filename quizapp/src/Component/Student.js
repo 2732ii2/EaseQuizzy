@@ -6,6 +6,7 @@ import Block from './Block';
 import { json, useNavigate } from 'react-router-dom';
 export default function Student() {
     var [arr,setarr]=useState([]);
+    console.log(arr);
     var [err,seterr]=useState("");
     var [bees,setbees]=useState("");
     var [userinput,setinput]=useState("");

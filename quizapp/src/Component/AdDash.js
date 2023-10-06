@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Dashboard.css";
 import Chart from "chart.js/auto";
+import axios from "axios";
 import { Doughnut,Bar ,Line} from "react-chartjs-2";
 import { useNavigate } from 'react-router-dom';
 export default function AdDash() {
-
+    var [err,seterr]=useState("");
+    var [arr, setarr] = useState([]);
+    var [arr2, setarr_2] = useState([]);
+    console.log(arr,arr2);
     var list_s = [
       { name: "Ashad", subject: "Verbal" },
       { name: "Amaan", subject: "Reasoning" },
@@ -29,6 +33,26 @@ export default function AdDash() {
         },
       ],
     };
+    async function caller() {
+      try {
+        // https://easyquizy.onrender.com
+        // var {data} = await axios.get("http://localhost:9800/getusers");
+        //  console.log(data);
+        var { data } = await axios.get(
+          "https://easyquizy.onrender.com/getusers"
+        );
+        console.log(data);
+        setarr(data);
+        var data2 = await axios.get("http://localhost:9800/getresult");
+        setarr_2(data2.data);
+        //http:localhost:9800/getresult
+
+        
+      } catch (e) {
+        console.log(e.message);
+        seterr(e.message);
+      }
+    }
     const data2 = {
       labels: ["green ", "red", "orange", "white", "black","less"],
       datasets: [
@@ -85,6 +109,9 @@ export default function AdDash() {
         },
       ],
     };
+    useEffect(()=>{
+      caller();
+    },[])
   return (
     <div id="admindash">
       <div id="sidebar">
@@ -113,7 +140,7 @@ export default function AdDash() {
                   {
                     list_s.map((e,i)=>{
                       return (
-                        <div id={`ls${i}_`} className="ls_">
+                        <div id={`ls${i}_`} key={i} className="ls_">
                           <div>{e.name}</div>
                           <div>{e.subject}</div>
                         </div>
