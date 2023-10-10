@@ -1,6 +1,4 @@
-<img width="1440" alt="Screenshot 2023-10-08 at 8 28 39 PM" src="https://github.com/2732ii2/EaseQuizzy/assets/83974207/53e46a41-6846-4fd1-9672-0180e355e212"># EaseQuizzy (Easy to create and Easy to play)
-
-
+# EaseQuizzy (Easy to create and Easy to play)
 <p> Problem Statement : A platform where student can create their quizzes to learn and play with the concepts like Verbal and Resoning and aptitude like Question before any specific exam </p>
 Deployed link : https://easequizzy.netlify.app/
 
