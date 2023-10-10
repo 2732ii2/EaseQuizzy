@@ -97,7 +97,7 @@
 }
 #actualdowns{
     width: 90%;
-    height: 70%;
+    height: 80%;
     /* border: 1px solid white; */
     margin-left: auto;
     margin-right: auto;
@@ -109,13 +109,13 @@
 .ls_{
     width: 90%;
     height: 70px;
-    min-height: 100px;
+    min-height: 70px;
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
-     background: rgb(225, 220, 220,.9);
+     background: rgb(225, 220, 220,.2);
     background: white;
 
     color: black;
@@ -130,8 +130,10 @@
 
 #ls0_{
     background: white;
-     background: rgb(225, 220, 220,.9);
-
+     background: transparent;
+    color: white;
+    border: 1px solid white;
+    text-shadow: 2px 2px 4px black;
 }
 #h_4_test{
     font-size: 1.4rem;
